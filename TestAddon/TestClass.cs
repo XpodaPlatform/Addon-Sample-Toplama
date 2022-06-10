@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,15 @@ namespace TestAddon
 
             {
                 // Bu parametreler XPODA Client tarafından gönderilecektir.
-                var value = Convert.ToInt32(parameters[0]["x"]) + Convert.ToInt32(parameters[1]["y"]);
+                var value = Convert.ToInt32(parameters[0]["x"]) + Convert.ToInt32(parameters[0]["y"]);
+
+
+                // Harici kütüphane kullanma örneği.
+                Log.Logger = new LoggerConfiguration()
+                    .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day)
+                    .CreateLogger();
+
+                Log.Information("Ah, there you are!");
 
                 List.Add(new Dictionary<string, object> { { "Result", value } });
 
