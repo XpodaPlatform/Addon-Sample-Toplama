@@ -26,7 +26,7 @@ namespace TestAddon
 
             {
                 // Bu parametreler XPODA Client tarafından gönderilecektir.
-                var value = Convert.ToInt32(parameters[0]["x"]) + Convert.ToInt32(parameters[0]["y"]);
+                var value = Convert.ToInt32(parameters[0]["x"]) + Convert.ToInt32(parameters[1]["y"]);
 
 
                 // Harici kütüphane kullanma örneği.
